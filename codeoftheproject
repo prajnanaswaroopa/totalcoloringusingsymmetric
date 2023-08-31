@@ -1,0 +1,29 @@
+#Here is an example to find the total chromG=SymmetricGroup(4)
+H=G.cayley_graph(generators=[G((1,2)),G((1,3)),G((1,4)),G((2,3)),G((2,4))])
+I=H.to_undirected()
+
+S1=[G(()),G((1,3),(4,2)),G((1,3,2)),G((1,2,4)),G((3,4)),G((1,4,2,3)),G((1,4,3,2)),G((1,2,3,4))]
+L1=set(I.vertices())-set(S1)
+G1=I.subgraph(L1)
+M1=G1.matching()
+I.delete_edges(M1)
+
+S2=[G((1,4),(2,3)),G((1,2),(3,4)),G((2,3,4)),G((1,4,3)),G((1,3,2,4)),G((1,2)),G((2,4)),G((1,3))]
+L2=set(I.vertices())-set(S2)
+G2=I.subgraph(L2)
+M2=G2.matching()
+I.delete_edges(M2)
+
+S3=[G((1,4)),G((3,2)),G((1,3,4)),G((2,4,3))]
+L3=set(I.vertices())-set(S3)
+G3=I.subgraph(L3)
+M3=G3.matching()
+I.delete_edges(M3)
+
+S4=[G((1,2,3)),G((1,4,2)),G((1,2,4,3)),G((1,3,4,2))]
+L4=set(I.vertices())-set(S4)
+G4=I.subgraph(L4)
+M4=G4.matching()
+I.delete_edges(M4)
+I.size()
+#Total chromatic number is now output + 7
